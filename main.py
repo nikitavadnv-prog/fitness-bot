@@ -10,5 +10,21 @@ from telegram.ext import (
     CallbackQueryHandler,
     ConversationHandler,
 )
+
 TOKEN = "8318226107:AAGio8GHPu1c9grmuM7L59YDRo50j631Uss"  
 GYM_PHOTO_URL = "https://i.imgur.com/5XJkRl9.png"  
+
+# Пример обработчика команды /start
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("Добро пожаловать в фитнес-бот!")
+
+def main():
+    application = Application.builder().token(TOKEN).build()
+    application.add_handler(CommandHandler("start", start))
+    # Добавьте другие обработчики по мере необходимости
+
+    application.run_polling()
+
+if __name__ == "__main__":
+    main()
+
